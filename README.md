@@ -43,7 +43,7 @@ Originally based on [amazonica][amazonica].
 Add the following to your dependencies:
 
 ```clj
-[com.palletops/awaze "0.1.1-SNAPSHOT"]
+[com.palletops/awaze "0.1.0"]
 ```
 
 ## Usage
@@ -55,6 +55,10 @@ Each method of the client generates two clojure functions, one which executes
 the client method directly, and one, with a `-map` suffix, that generates a map.
 The map can be passed to a multimethod, with the same name as the service, which
 actually runs the client method.
+
+[API docs](http:/pallet.github.com/awaze/0.1/api/index.html).
+
+[Annotated source](http:/pallet.github.com/awaze/0.1/uberdoc.html).
 
 ## Known issues
 
