@@ -20,7 +20,7 @@ with `:access-key`, `:secret-key` and optionally `:endpoint` keys.
 ```clj
 (require '[com.palletops.awaze.ec2 :as ec2 :refer [ec2]])
 (ec2/describe-instances
-  {:access-key "AKIRIEDKE5ZBZG5VVCA
+  {:access-key "AKIRIEDKE5ZBZG5VVCA"
    :secret-key "76dDdsKDJdsKDH+Uyuiy678Khjhkh8797vbnvnv"})
 ```
 
@@ -31,7 +31,7 @@ executor function.
 ```clj
 (require '[com.palletops.awaze.ec2 :as ec2 :refer [ec2]])
 (let [m (ec2/describe-instances-map
-         {:access-key "AKIRIEDKE5ZBZG5VVCA
+         {:access-key "AKIRIEDKE5ZBZG5VVCA"
           :secret-key "76dDdsKDJdsKDH+Uyuiy678Khjhkh8797vbnvnv"})]
   (ec2/ec2 m))
 ```
