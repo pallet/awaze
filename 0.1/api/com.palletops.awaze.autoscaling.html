@@ -1,0 +1,605 @@
+<html lang="en">
+  <head>
+    <title>com.palletops.awaze.autoscaling documentation</title>
+    <link href="css/default.css" type="text/css" rel="stylesheet" />
+    <link href="css/codox-md.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/page_effects.js"></script>
+  </head>
+  <body>
+    <header>
+    <div data-scrollspy="scrollspy" class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a href="/" class="brand">Pallet</a>
+          <ul class="nav">
+            <li class=""><a href="/doc">Documentation</a></li>
+            <li class=""><a href="/news">News</a></li>
+            <li class=""><a href="/blog">Blog</a></li>
+            <li class=""><a href="https://github.com/pallet/pallet">Code</a></li>
+            <li class=""><a href="/services">Services</a></li>
+            <li class=""><a href="/support">Support</a></li>
+            <li class=""><a href="/contact">Contact</a></li>
+          </ul>
+          <form action="http://www.google.com/search" method="get" class="pull-right">
+            <input placeholder="Search" value="" maxlength="255" name="q" type="text" />
+            <input value="palletops.com" type="hidden" name="sitesearch" />
+          </form>
+        </div>
+      </div>
+    </div>
+      <div id="header">
+        <h1><a href="http://palletops.com"><span class="project-title">Awaze 0.1.0 API documentation</span></a></h1>
+      </div>
+    </header>
+    <navigation>
+      <div id="namespaces" class="sidebar">
+        <h3>Namespaces</h3>
+        <ul class="ns-links">
+          <li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.common.html">com.palletops.awaze.common</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.autoscaling.html">com.palletops.awaze.autoscaling</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.cloudformation.html">com.palletops.awaze.cloudformation</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.cloudfront.html">com.palletops.awaze.cloudfront</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.cloudsearch.html">com.palletops.awaze.cloudsearch</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.cloudwatch.html">com.palletops.awaze.cloudwatch</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.datapipeline.html">com.palletops.awaze.datapipeline</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.directconnect.html">com.palletops.awaze.directconnect</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.ec2.html">com.palletops.awaze.ec2</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.elasticache.html">com.palletops.awaze.elasticache</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.elasticbeanstalk.html">com.palletops.awaze.elasticbeanstalk</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.elasticloadbalancing.html">com.palletops.awaze.elasticloadbalancing</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.elasticmapreduce.html">com.palletops.awaze.elasticmapreduce</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.iam.html">com.palletops.awaze.iam</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.rds.html">com.palletops.awaze.rds</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.redshift.html">com.palletops.awaze.redshift</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.route53.html">com.palletops.awaze.route53</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.securitytoken.html">com.palletops.awaze.securitytoken</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.simpledb.html">com.palletops.awaze.simpledb</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.sns.html">com.palletops.awaze.sns</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.storagegateway.html">com.palletops.awaze.storagegateway</a></li><li class="ns-list"><a class="ns-link ns-name" href="com.palletops.awaze.sts.html">com.palletops.awaze.sts</a></li>
+        </ul>
+      </div>
+      <div id="vars" class="sidebar">
+        <h3>Public Vars</h3>
+        <ul class="ns-var-links">
+          <li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-auto-scaling-group">create-auto-scaling-group</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-auto-scaling-group-map">create-auto-scaling-group-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-launch-configuration">create-launch-configuration</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-launch-configuration-map">create-launch-configuration-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-or-update-tags">create-or-update-tags</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-create-or-update-tags-map">create-or-update-tags-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-auto-scaling-group">delete-auto-scaling-group</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-auto-scaling-group-map">delete-auto-scaling-group-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-launch-configuration">delete-launch-configuration</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-launch-configuration-map">delete-launch-configuration-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-notification-configuration">delete-notification-configuration</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-notification-configuration-map">delete-notification-configuration-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-policy">delete-policy</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-policy-map">delete-policy-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-scheduled-action">delete-scheduled-action</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-scheduled-action-map">delete-scheduled-action-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-tags">delete-tags</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-delete-tags-map">delete-tags-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-adjustment-types">describe-adjustment-types</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-adjustment-types-map">describe-adjustment-types-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-groups">describe-auto-scaling-groups</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-groups-map">describe-auto-scaling-groups-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-instances">describe-auto-scaling-instances</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-instances-map">describe-auto-scaling-instances-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-notification-types">describe-auto-scaling-notification-types</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-auto-scaling-notification-types-map">describe-auto-scaling-notification-types-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-launch-configurations">describe-launch-configurations</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-launch-configurations-map">describe-launch-configurations-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-metric-collection-types">describe-metric-collection-types</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-metric-collection-types-map">describe-metric-collection-types-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-notification-configurations">describe-notification-configurations</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-notification-configurations-map">describe-notification-configurations-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-policies">describe-policies</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-policies-map">describe-policies-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scaling-activities">describe-scaling-activities</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scaling-activities-map">describe-scaling-activities-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scaling-process-types">describe-scaling-process-types</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scaling-process-types-map">describe-scaling-process-types-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scheduled-actions">describe-scheduled-actions</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-scheduled-actions-map">describe-scheduled-actions-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-tags">describe-tags</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-tags-map">describe-tags-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-termination-policy-types">describe-termination-policy-types</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-describe-termination-policy-types-map">describe-termination-policy-types-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-disable-metrics-collection">disable-metrics-collection</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-disable-metrics-collection-map">disable-metrics-collection-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-enable-metrics-collection">enable-metrics-collection</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-enable-metrics-collection-map">enable-metrics-collection-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-execute-policy">execute-policy</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-execute-policy-map">execute-policy-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-notification-configuration">put-notification-configuration</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-notification-configuration-map">put-notification-configuration-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-scaling-policy">put-scaling-policy</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-scaling-policy-map">put-scaling-policy-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-scheduled-update-group-action">put-scheduled-update-group-action</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-put-scheduled-update-group-action-map">put-scheduled-update-group-action-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-resume-processes">resume-processes</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-resume-processes-map">resume-processes-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-set-desired-capacity">set-desired-capacity</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-set-desired-capacity-map">set-desired-capacity-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-set-instance-health">set-instance-health</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-set-instance-health-map">set-instance-health-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-suspend-processes">suspend-processes</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-suspend-processes-map">suspend-processes-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-terminate-instance-in-auto-scaling-group">terminate-instance-in-auto-scaling-group</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-terminate-instance-in-auto-scaling-group-map">terminate-instance-in-auto-scaling-group-map</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-update-auto-scaling-group">update-auto-scaling-group</a></li><li class="ns-var-list"><a class="ns-var-link ns-var-name" href="com.palletops.awaze.autoscaling.html#var-update-auto-scaling-group-map">update-auto-scaling-group-map</a></li>
+        </ul>
+      </div>
+    </navigation>
+    <article>
+      <div id="content" class="namespace-docs">
+        <h2 class="namespace-title">com.palletops.awaze.autoscaling documentation</h2>
+        <div class="doc">
+</div>
+        <div class="ns-vars">
+          <div class="public">
+            <h3><a id="var-create-auto-scaling-group" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1634">create-auto-scaling-group</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [load-balancer-names health-check-grace-period placement-group request-metric-collector launch-configuration-name termination-policies vpczone-identifier desired-capacity availability-zones min-size default-cooldown max-size health-check-type auto-scaling-group-name tags]}]</div>
+            
+            
+            <div class="doc"><p>Call createAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-create-auto-scaling-group-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1608">create-auto-scaling-group-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [load-balancer-names health-check-grace-period placement-group request-metric-collector launch-configuration-name termination-policies vpczone-identifier desired-capacity availability-zones min-size default-cooldown max-size health-check-type auto-scaling-group-name tags]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for createAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-create-launch-configuration" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1902">create-launch-configuration</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [instance-type kernel-id associate-public-ip-address request-metric-collector launch-configuration-name ebs-optimized block-device-mappings spot-price user-data security-groups ramdisk-id instance-monitoring iam-instance-profile key-name image-id]}]</div>
+            
+            
+            <div class="doc"><p>Call createLaunchConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-create-launch-configuration-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1876">create-launch-configuration-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [instance-type kernel-id associate-public-ip-address request-metric-collector launch-configuration-name ebs-optimized block-device-mappings spot-price user-data security-groups ramdisk-id instance-monitoring iam-instance-profile key-name image-id]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for createLaunchConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-create-or-update-tags" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2968">create-or-update-tags</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [tags request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call createOrUpdateTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-create-or-update-tags-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2959">create-or-update-tags-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [tags request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for createOrUpdateTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-auto-scaling-group" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2920">delete-auto-scaling-group</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector force-delete auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call deleteAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-auto-scaling-group-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2906">delete-auto-scaling-group-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector force-delete auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deleteAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-launch-configuration" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2386">delete-launch-configuration</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector launch-configuration-name]}]</div>
+            
+            
+            <div class="doc"><p>Call deleteLaunchConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-launch-configuration-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2375">delete-launch-configuration-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector launch-configuration-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deleteLaunchConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-notification-configuration" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2814">delete-notification-configuration</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [topic-arn request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call deleteNotificationConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-notification-configuration-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2800">delete-notification-configuration-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [topic-arn request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deleteNotificationConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-policy" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L984">delete-policy</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector policy-name auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call deletePolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-policy-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L970">delete-policy-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector policy-name auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deletePolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-scheduled-action" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2688">delete-scheduled-action</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scheduled-action-name request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call deleteScheduledAction</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-scheduled-action-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2674">delete-scheduled-action-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scheduled-action-name request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deleteScheduledAction</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-tags" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1163">delete-tags</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [tags request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call deleteTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-delete-tags-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1154">delete-tags-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [tags request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for deleteTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-adjustment-types" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2211">describe-adjustment-types</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call describeAdjustmentTypes, describeAdjustmentTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-adjustment-types-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2195">describe-adjustment-types-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeAdjustmentTypes, describeAdjustmentTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-groups" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1715">describe-auto-scaling-groups</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-names]}]</div>
+            
+            
+            <div class="doc"><p>Call describeAutoScalingGroups, describeAutoScalingGroups</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-groups-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1693">describe-auto-scaling-groups-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-names]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeAutoScalingGroups, describeAutoScalingGroups</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-instances" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1226">describe-auto-scaling-instances</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records instance-ids]}]</div>
+            
+            
+            <div class="doc"><p>Call describeAutoScalingInstances, describeAutoScalingInstances</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-instances-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1204">describe-auto-scaling-instances-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records instance-ids]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeAutoScalingInstances, describeAutoScalingInstances</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-notification-types" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1380">describe-auto-scaling-notification-types</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Call describeAutoScalingNotificationTypes, describeAutoScalingNotificationTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-auto-scaling-notification-types-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1364">describe-auto-scaling-notification-types-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeAutoScalingNotificationTypes, describeAutoScalingNotificationTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-launch-configurations" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1105">describe-launch-configurations</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector next-token max-records launch-configuration-names]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Call describeLaunchConfigurations, describeLaunchConfigurations</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-launch-configurations-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1083">describe-launch-configurations-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector next-token max-records launch-configuration-names]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeLaunchConfigurations, describeLaunchConfigurations</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-metric-collection-types" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2630">describe-metric-collection-types</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call describeMetricCollectionTypes, describeMetricCollectionTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-metric-collection-types-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2614">describe-metric-collection-types-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeMetricCollectionTypes, describeMetricCollectionTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-notification-configurations" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1306">describe-notification-configurations</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-names]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Call describeNotificationConfigurations, describeNotificationConfigurations</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-notification-configurations-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1284">describe-notification-configurations-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-names]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeNotificationConfigurations, describeNotificationConfigurations</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-policies" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1508">describe-policies</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector policy-names next-token max-records auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call describePolicies, describePolicies</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-policies-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1486">describe-policies-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector policy-names next-token max-records auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describePolicies, describePolicies</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scaling-activities" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2052">describe-scaling-activities</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-name activity-ids]}]</div>
+            
+            
+            <div class="doc"><p>Call describeScalingActivities, describeScalingActivities</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scaling-activities-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2029">describe-scaling-activities-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records auto-scaling-group-name activity-ids]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeScalingActivities, describeScalingActivities</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scaling-process-types" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2562">describe-scaling-process-types</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call describeScalingProcessTypes, describeScalingProcessTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scaling-process-types-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2546">describe-scaling-process-types-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeScalingProcessTypes, describeScalingProcessTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scheduled-actions" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2135">describe-scheduled-actions</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [start-time end-time auto-scaling-group-name max-records scheduled-action-names next-token request-metric-collector]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Call describeScheduledActions, describeScheduledActions</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-scheduled-actions-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2110">describe-scheduled-actions-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [start-time end-time auto-scaling-group-name max-records scheduled-action-names next-token request-metric-collector]}]</div><div class="usage">[credentials]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeScheduledActions, describeScheduledActions</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-tags" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2279">describe-tags</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records filters]}]</div>
+            
+            
+            <div class="doc"><p>Call describeTags, describeTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-tags-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2261">describe-tags-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector next-token max-records filters]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeTags, describeTags</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-termination-policy-types" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1977">describe-termination-policy-types</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call describeTerminationPolicyTypes, describeTerminationPolicyTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-describe-termination-policy-types-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1961">describe-termination-policy-types-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials]</div><div class="usage">[credentials {:keys [request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for describeTerminationPolicyTypes, describeTerminationPolicyTypes</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-disable-metrics-collection" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2434">disable-metrics-collection</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector metrics auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call disableMetricsCollection</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-disable-metrics-collection-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2422">disable-metrics-collection-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector metrics auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for disableMetricsCollection</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-enable-metrics-collection" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L931">enable-metrics-collection</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector metrics granularity auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call enableMetricsCollection</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-enable-metrics-collection-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L916">enable-metrics-collection-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector metrics granularity auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for enableMetricsCollection</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-execute-policy" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1837">execute-policy</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector policy-name honor-cooldown auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call executePolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-execute-policy-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1822">execute-policy-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector policy-name honor-cooldown auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for executePolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-notification-configuration" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1439">put-notification-configuration</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [topic-arn request-metric-collector notification-types auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call putNotificationConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-notification-configuration-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1424">put-notification-configuration-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [topic-arn request-metric-collector notification-types auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for putNotificationConfiguration</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-scaling-policy" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1781">put-scaling-policy</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [min-adjustment-step scaling-adjustment cooldown auto-scaling-group-name policy-name adjustment-type request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Call putScalingPolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-scaling-policy-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1763">put-scaling-policy-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [min-adjustment-step scaling-adjustment cooldown auto-scaling-group-name policy-name adjustment-type request-metric-collector]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for putScalingPolicy</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-scheduled-update-group-action" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2492">put-scheduled-update-group-action</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [end-time request-metric-collector desired-capacity recurrence start-time min-size time max-size scheduled-action-name auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call putScheduledUpdateGroupAction</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-put-scheduled-update-group-action-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2471">put-scheduled-update-group-action-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [end-time request-metric-collector desired-capacity recurrence start-time min-size time max-size scheduled-action-name auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for putScheduledUpdateGroupAction</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-resume-processes" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2337">resume-processes</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scaling-processes request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call resumeProcesses</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-resume-processes-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2323">resume-processes-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scaling-processes request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for resumeProcesses</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-set-desired-capacity" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L877">set-desired-capacity</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector honor-cooldown desired-capacity auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call setDesiredCapacity</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-set-desired-capacity-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L862">set-desired-capacity-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [request-metric-collector honor-cooldown desired-capacity auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for setDesiredCapacity</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-set-instance-health" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1036">set-instance-health</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [should-respect-grace-period request-metric-collector instance-id health-status]}]</div>
+            
+            
+            <div class="doc"><p>Call setInstanceHealth</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-set-instance-health-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1021">set-instance-health-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [should-respect-grace-period request-metric-collector instance-id health-status]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for setInstanceHealth</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-suspend-processes" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1570">suspend-processes</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scaling-processes request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call suspendProcesses</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-suspend-processes-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L1556">suspend-processes-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [scaling-processes request-metric-collector auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for suspendProcesses</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-terminate-instance-in-auto-scaling-group" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2867">terminate-instance-in-auto-scaling-group</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [should-decrement-desired-capacity request-metric-collector instance-id]}]</div>
+            
+            
+            <div class="doc"><p>Call terminateInstanceInAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-terminate-instance-in-auto-scaling-group-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2853">terminate-instance-in-auto-scaling-group-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [should-decrement-desired-capacity request-metric-collector instance-id]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for terminateInstanceInAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-update-auto-scaling-group" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2751">update-auto-scaling-group</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [health-check-grace-period placement-group request-metric-collector launch-configuration-name termination-policies vpczone-identifier desired-capacity availability-zones min-size default-cooldown max-size health-check-type auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Call updateAutoScalingGroup</p>
+</div>
+          </div><div class="public">
+            <h3><a id="var-update-auto-scaling-group-map" class="source var-name" href="https://github.com/pallet/awaze/blob/develop/target/generated/com/palletops/awaze/autoscaling.clj#L2727">update-auto-scaling-group-map</a></h3>
+            <h4 class="var-type fn" id="var-type">fn</h4>
+            <div class="usage">[credentials {:keys [health-check-grace-period placement-group request-metric-collector launch-configuration-name termination-policies vpczone-identifier desired-capacity availability-zones min-size default-cooldown max-size health-check-type auto-scaling-group-name]}]</div>
+            
+            
+            <div class="doc"><p>Generate map for updateAutoScalingGroup</p>
+</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </body>
+
+</html>
