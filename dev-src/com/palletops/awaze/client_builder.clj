@@ -191,7 +191,9 @@ java.util.Collection `identity
                            :value ~m}))
 
          (enum? class)
-         `(Enum/valueOf ~class (name ~m))
+         (if (= class com.amazonaws.services.ec2.model.InstanceType)
+           `(. ~class ~'fromValue (name ~m))
+           `(Enum/valueOf ~class (name ~m)))
 
          :else
          (let [[ctor args] (required-constructor-args class)]
