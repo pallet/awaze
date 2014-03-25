@@ -4,7 +4,7 @@
    [clojure.java.io :refer [file input-stream]]
    [clojure.string :refer [join lower-case upper-case split] :as string]
    [clojure.tools.logging :refer [infof debugf]]
-   [clojure.pprint :refer [pprint]]
+   [fipp.edn :refer [pprint]]
    [com.palletops.awaze.common
     :refer [aws aws-client aws-client-factory aws-package?
             camel->dashed camel->keyword to-data to-date]])
@@ -551,7 +551,7 @@ java.util.Collection `identity
 (defn gen-api
   [target api class & {:keys [pretty-print]}]
   (println "Generating" api "in" (str target))
-  (let [pp (if pretty-print clojure.pprint/pprint identity)]
+  (let [pp (if pretty-print pprint identity)]
     (binding [*print-meta* true]
       (spit target
             (str (api-ns-form pp api)

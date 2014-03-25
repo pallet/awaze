@@ -1,4 +1,5 @@
-{:dev {:dependencies [[ch.qos.logback/logback-classic "1.0.9"]
+{:dev {:dependencies [[org.clojure/clojure "1.5.1"] ; for fipp
+                      [ch.qos.logback/logback-classic "1.0.9"]
                       [org.slf4j/jcl-over-slf4j "1.7.5"]
                       [org.clojure/tools.logging "0.2.6"]]
        :source-paths ["src" "dev-src" "target/generated"]
