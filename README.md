@@ -1,5 +1,7 @@
 # Awaze
 
+[![Build Status](https://travis-ci.org/pallet/awaze.svg?branch=master)](https://travis-ci.org/pallet/awaze)
+
 A clojure client library for AWS services, using the
 [AWS Java SDK][awssdk].
 
