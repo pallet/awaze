@@ -533,6 +533,20 @@ java.util.Collection `identity
    :sqs 'com.amazonaws.auth.DefaultAWSCredentialsProviderChain
    :storagegateway 'com.amazonaws.services.storagegateway.AWSStorageGatewayClient})
 
+(def api-refer-exclude
+  "Map of clojure symbols to exclude for each api namespace to avoid
+  redefinition warnings."
+  {:ec2 '[filter]})
+
+(defn api-ns-form
+  "Return a `ns` form for the given api."
+  [pp api]
+  (with-out-str
+    (pp
+     `(~'ns ~(symbol (str "com.palletops.awaze." (name api)))
+        ~@(if-let [excludes (api api-refer-exclude)]
+            [`(:refer-clojure :exclude ~excludes)])
+        (:require [com.palletops.awaze.common])))))
 
 (defn gen-api
   [target api class & {:keys [pretty-print]}]
@@ -540,8 +554,7 @@ java.util.Collection `identity
   (let [pp (if pretty-print clojure.pprint/pprint identity)]
     (binding [*print-meta* true]
       (spit target
-            (str `(~'ns ~(symbol (str "com.palletops.awaze." (name api)))
-                    (:require [com.palletops.awaze.common]))
+            (str (api-ns-form pp api)
                  \newline \newline
                  (with-out-str (pp (add-aws-client api class))))))))
 
