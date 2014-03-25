@@ -1,6 +1,6 @@
 (defproject com.palletops/awaze "0.1.1-SNAPSHOT"
   :description "A pallet library for AWS, using the AWS java SDK."
-  :url "https:/github.com/pallet/awaze"
+  :url "https://github.com/pallet/awaze"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
