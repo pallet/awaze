@@ -20,7 +20,7 @@ with `:access-key`, `:secret-key` and optionally `:endpoint` keys.
 ```clj
 (require '[com.palletops.awaze.ec2 :as ec2 :refer [ec2]])
 (ec2/describe-instances
-  {:access-key "AKIRIEDKE5ZBZG5VVCA
+  {:access-key "AKIRIEDKE5ZBZG5VVCA"
    :secret-key "76dDdsKDJdsKDH+Uyuiy678Khjhkh8797vbnvnv"})
 ```
 
@@ -31,7 +31,7 @@ executor function.
 ```clj
 (require '[com.palletops.awaze.ec2 :as ec2 :refer [ec2]])
 (let [m (ec2/describe-instances-map
-         {:access-key "AKIRIEDKE5ZBZG5VVCA
+         {:access-key "AKIRIEDKE5ZBZG5VVCA"
           :secret-key "76dDdsKDJdsKDH+Uyuiy678Khjhkh8797vbnvnv"})]
   (ec2/ec2 m))
 ```
@@ -43,7 +43,7 @@ Originally based on [amazonica][amazonica].
 Add the following to your dependencies:
 
 ```clj
-[com.palletops/awaze "0.1.1-SNAPSHOT"]
+[com.palletops/awaze "0.1.1"]
 ```
 
 ## Usage
@@ -55,6 +55,10 @@ Each method of the client generates two clojure functions, one which executes
 the client method directly, and one, with a `-map` suffix, that generates a map.
 The map can be passed to a multimethod, with the same name as the service, which
 actually runs the client method.
+
+[API docs](http:/pallet.github.com/awaze/0.1/api/index.html).
+
+[Annotated source](http:/pallet.github.com/awaze/0.1/uberdoc.html).
 
 ## Known issues
 

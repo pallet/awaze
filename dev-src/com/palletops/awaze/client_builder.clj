@@ -4,10 +4,12 @@
    [clojure.java.io :refer [file input-stream]]
    [clojure.string :refer [join lower-case upper-case split] :as string]
    [clojure.tools.logging :refer [infof debugf]]
-   [clojure.pprint :refer [pprint]]
+   [fipp.edn :refer [pprint]]
    [com.palletops.awaze.common
     :refer [aws aws-client aws-client-factory aws-package?
-            camel->dashed camel->keyword to-data to-date]])
+            camel->dashed camel->keyword
+            coerce-value-form enum?
+            to-data to-date type->symbol]])
   (:import
    [java.lang.reflect Constructor Method Modifier ParameterizedType]
    [java.text SimpleDateFormat ParsePosition]
@@ -18,83 +20,9 @@
    [com.amazonaws.auth BasicAWSCredentials]
    [com.amazonaws.regions Region Regions]))
 
-(defn- camel->dashed-symbol
-  [s]
-  (symbol (camel->dashed s)))
-
-(defn dotted-last
-  "Return the last part of a dotted string"
-  [s]
-  (last (split s #"\.")))
-
-(defn type->symbol
-  "Return a symbol based on a dashed version of the type's class name."
-  [^Class class]
-  (symbol (camel->dashed (dotted-last (.getName class)))))
-
 (defn public-method?
   [^Method method]
   (Modifier/isPublic (.getModifiers method)))
-
-;;; ## Clojure -> type conversions
-(def ^:private date-format (atom "yyyy-MM-dd"))
-
-(def ^:private coercion-syms
-  (atom
-   {String `str
-    Integer `int
-    Integer/TYPE `int
-    Long `long
-    Long/TYPE `long
-    Boolean `boolean
-    Boolean/TYPE `boolean
-    Double `double
-    Double/TYPE `double
-    Float `float
-    Float/TYPE `float
-    BigDecimal `bigdec
-    BigInteger `bigint
-    Date `to-date
-    java.io.File `file
-    java.io.InputStream `input-stream}))
-
-(defn add-coercions
-  "Add mappings of functions to coerce to types.  The function val is used to
-  convert values to the key type."
-  [coercions]
-  (swap! coercions merge coercions))
-
-(defn enum?
-  "Predicate to test if type is a predicate"
-  [^Class type]
-  (= java.lang.Enum (.getSuperclass type)))
-
-java.util.Collection `identity
-
-(defmulti coerce-value-form
-  "Return a form that coerces the supplied `value` to `type`."
-  (fn [type value] (class type)))
-
-(defmethod coerce-value-form Class
-  [^Class type value]
-  (cond
-   (enum? type) `(~(type->symbol type) ~value)
-   (.isArray type) (let [arg (gensym "arg")]
-                     `(into-array
-                       ~(.getComponentType type)
-                       (map (fn [~arg]
-                              ~(coerce-value-form (.getComponentType type) arg))
-                            ~value)))
-   (aws-package? type) `(~(type->symbol type) ~value)
-
-   :else (let [f (get @coercion-syms type)]
-           (when-not f
-             (println
-              "Couldn't find coercion function for"
-              (pr-str type) "of type" (class type) (.getName type)))
-           (if f
-             `(~f ~value)
-             value))))
 
 (defmethod coerce-value-form ParameterizedType
   [^ParameterizedType type value]
@@ -191,7 +119,9 @@ java.util.Collection `identity
                            :value ~m}))
 
          (enum? class)
-         `(Enum/valueOf ~class (name ~m))
+         (if (= class com.amazonaws.services.ec2.model.InstanceType)
+           `(. ~class ~'fromValue (name ~m))
+           `(Enum/valueOf ~class (name ~m)))
 
          :else
          (let [[ctor args] (required-constructor-args class)]
@@ -531,15 +461,28 @@ java.util.Collection `identity
    :sqs 'com.amazonaws.auth.DefaultAWSCredentialsProviderChain
    :storagegateway 'com.amazonaws.services.storagegateway.AWSStorageGatewayClient})
 
+(def api-refer-exclude
+  "Map of clojure symbols to exclude for each api namespace to avoid
+  redefinition warnings."
+  {:ec2 '[filter]})
+
+(defn api-ns-form
+  "Return a `ns` form for the given api."
+  [pp api]
+  (with-out-str
+    (pp
+     `(~'ns ~(symbol (str "com.palletops.awaze." (name api)))
+        ~@(if-let [excludes (api api-refer-exclude)]
+            [`(:refer-clojure :exclude ~excludes)])
+        (:require [com.palletops.awaze.common])))))
 
 (defn gen-api
   [target api class & {:keys [pretty-print]}]
   (println "Generating" api "in" (str target))
-  (let [pp (if pretty-print clojure.pprint/pprint identity)]
+  (let [pp (if pretty-print pprint identity)]
     (binding [*print-meta* true]
       (spit target
-            (str `(~'ns ~(symbol (str "com.palletops.awaze." (name api)))
-                    (:require [com.palletops.awaze.common]))
+            (str (api-ns-form pp api)
                  \newline \newline
                  (with-out-str (pp (add-aws-client api class))))))))
 

@@ -23,9 +23,24 @@
         (join \-))
    "$" ""))
 
+
+(defn- camel->dashed-symbol
+  [s]
+  (symbol (camel->dashed s)))
+
+(defn dotted-last
+  "Return the last part of a dotted string"
+  [s]
+  (last (split s #"\.")))
+
 (defn camel->keyword
   [s]
   (keyword (camel->dashed s)))
+
+(defn type->symbol
+  "Return a symbol based on a dashed version of the type's class name."
+  [^Class class]
+  (symbol (camel->dashed (dotted-last (.getName class)))))
 
 (defn aws-package?
   [^Class class]
@@ -122,3 +137,65 @@
 (defmulti aws
   "Defines a multi-method for dispatching data to AWS requests."
   (fn [request] [(::api request) (:fn request)]))
+
+
+
+;;; # Value Coercions
+
+;;; ## Clojure -> type conversions
+(def ^:private date-format (atom "yyyy-MM-dd"))
+
+(def ^:private coercion-syms
+  (atom
+   {String `str
+    Integer `int
+    Integer/TYPE `int
+    Long `long
+    Long/TYPE `long
+    Boolean `boolean
+    Boolean/TYPE `boolean
+    Double `double
+    Double/TYPE `double
+    Float `float
+    Float/TYPE `float
+    BigDecimal `bigdec
+    BigInteger `bigint
+    Date `to-date
+    java.io.File `file
+    java.io.InputStream `input-stream}))
+
+(defn add-coercions
+  "Add mappings of functions to coerce to types.  The function val is used to
+  convert values to the key type."
+  [coercions]
+  (swap! coercions merge coercions))
+
+(defn enum?
+  "Predicate to test if type is a predicate"
+  [^Class type]
+  (= java.lang.Enum (.getSuperclass type)))
+
+(defmulti coerce-value-form
+  "Return a form that coerces the supplied `value` to `type`."
+  (fn [type value] (class type)))
+
+(defmethod coerce-value-form Class
+  [^Class type value]
+  (cond
+   (enum? type) `(~(type->symbol type) ~value)
+   (.isArray type) (let [arg (gensym "arg")]
+                     `(into-array
+                       ~(.getComponentType type)
+                       (map (fn [~arg]
+                              ~(coerce-value-form (.getComponentType type) arg))
+                            ~value)))
+   (aws-package? type) `(~(type->symbol type) ~value)
+
+   :else (let [f (get @coercion-syms type)]
+           (when-not f
+             (println
+              "Couldn't find coercion function for"
+              (pr-str type) "of type" (class type) (.getName type)))
+           (if f
+             `(~f ~value)
+             value))))
