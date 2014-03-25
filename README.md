@@ -43,7 +43,7 @@ Originally based on [amazonica][amazonica].
 Add the following to your dependencies:
 
 ```clj
-[com.palletops/awaze "0.1.0"]
+[com.palletops/awaze "0.1.1"]
 ```
 
 ## Usage
