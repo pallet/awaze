@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [com.amazonaws/aws-java-sdk "1.6.4"
-                  :exclusions [commons-logging]]
+                  :exclusions [commons-logging commons-codec]]
                  [fipp "0.4.1"]
                  [joda-time "2.1"]]
   :source-paths ["src" "dev-src" "target/generated"]
