@@ -85,23 +85,23 @@
                                       (.getConstructors class)
                                       (sort-by sortf)
                                       (partition-by sortf)
-                                      first)
-        arglist (.getParameterTypes ctor)]
-    (if (seq others)
-      ;; need to give the compiler type info to pick the correct overload
-      [ctor
-       (mapv
-        #(let [arg (with-meta (gensym "arg")
-                     {:tag (symbol (.getName ^Class %))})
-               val (if (aws-package? %)
-                     `(~(type->symbol %) {})
-                     (primitive-default-value %))]
-           [arg val])
-        arglist)]
-      ;; single overload - just return nils or primitive values
-      [ctor (->> arglist
-                 (map primitive-default-value)
-                 (map #(vector (gensym "arg") %)))])))
+                                      first)]
+    (if-let [arglist (and ctor (.getParameterTypes ctor))]
+      (if (seq others)
+        ;; need to give the compiler type info to pick the correct overload
+        [ctor
+         (mapv
+          #(let [arg (with-meta (gensym "arg")
+                       {:tag (symbol (.getName ^Class %))})
+                 val (if (aws-package? %)
+                       `(~(type->symbol %) {})
+                       (primitive-default-value %))]
+             [arg val])
+          arglist)]
+        ;; single overload - just return nils or primitive values
+        [ctor (->> arglist
+                   (map primitive-default-value)
+                   (map #(vector (gensym "arg") %)))]))))
 
 (defn bean-factory
   "Return a form defining a factory for the specified bean `class`, based on a
@@ -148,16 +148,18 @@
    (.isInterface class) nil
    (enum? class) nil
    :else
-   (let [[^Constructor ctor args] (required-constructor-args class)]
-     (.newInstance
-      ctor
-      (into-array Object
-                  (->> args
-                       (map second)
-                       (map (fn [x]     ; remove bean constructor expressions
-                              (if (or (list? x) (instance? clojure.lang.Cons x))
-                                nil
-                                x)))))))))
+   (if-let [[^Constructor ctor args] (required-constructor-args class)]
+     (if-let [vargs (seq
+                     (->>
+                      args
+                      (map second)
+                      (map (fn [x] ; remove bean constructor expressions
+                             (if (or (list? x) (instance? clojure.lang.Cons x))
+                               nil
+                               x)))))]
+       (.newInstance
+        ctor
+        (into-array Object vargs))))))
 
 (defmulti setter-arg-type
   "Return a sequence of bean types used in an argument"
