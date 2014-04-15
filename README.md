@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/pallet/awaze.svg?branch=master)](https://travis-ci.org/pallet/awaze)
 
 A clojure client library for AWS services, using the
-[AWS Java SDK][awssdk].
+[AWS Java SDK][awssdk], version 1.6.4.  See the
+[SDK Release Notes][awssdk-release-notes].
 
 The library is implemented using reflection to generate code, and therefore avoids
 reflection at compile time or runtime when using the library.
@@ -78,4 +79,5 @@ Any code from Amazonica is:
 Copyright (C) 2013 Michael Cohen
 
 [awssdk]: http://aws.amazon.com/sdkforjava/ "AWS Java SDK"
+[awssdk-release-notes]: http://aws.amazon.com/releasenotes/Java?browse=1 "AWS Java SDK Release Notes"
 [amazonica]: https://github.com/mcohen01/amazonica
