@@ -317,9 +317,14 @@
                            (comp symbol name)
                            (keys (dissoc (to-data instance)
                                          :request-credentials
-                                         :request-client-options)))
-                          (catch java.lang.reflect.InvocationTargetException _))]})
-           s)
+                                         :request-client-options
+                                         :request-metric-collector
+                                         :dry-run-request)))
+                          (catch java.lang.reflect.InvocationTargetException
+                              _))]})
+           (do
+             (debugf "instance type %s no bean-instance" (pr-str type))
+             s))
          s)))
    types (range)))
 
