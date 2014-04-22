@@ -4,10 +4,10 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
-                 [com.amazonaws/aws-java-sdk "1.6.4"
-                  :exclusions [commons-logging commons-codec]]
+                 [com.amazonaws/aws-java-sdk "1.7.6"
+                  :exclusions [commons-logging commons-codec joda-time]]
                  [fipp "0.4.1"]
-                 [joda-time "2.1"]]
+                 [joda-time "2.2"]]
   :source-paths ["src" "dev-src" "target/generated"]
   :global-vars {*warn-on-reflection* true}
   :main ^:skip-aot com.palletops.awaze.client-builder
