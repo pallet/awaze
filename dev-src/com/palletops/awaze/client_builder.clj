@@ -498,7 +498,7 @@
    :elasticbeanstalk 'com.amazonaws.services.elasticbeanstalk.AWSElasticBeanstalkClient
    :elasticloadbalancing 'com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancingClient
    :elasticmapreduce 'com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient
-   :glacier 'com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+   :glacier 'com.amazonaws.services.glacier.AmazonGlacierClient
    ;; :opsworks 'com.amazonaws.services.opsworks.AWSOpsWorksClient
    :rds 'com.amazonaws.services.rds.AmazonRDSClient
    :redshift 'com.amazonaws.services.redshift.AmazonRedshiftClient
@@ -507,13 +507,15 @@
    :simpledb 'com.amazonaws.services.simpledb.AmazonSimpleDBClient
    :simpleemail 'com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient
    :sns 'com.amazonaws.services.sns.AmazonSNSClient
-   :sqs 'com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+   :sqs 'com.amazonaws.services.sqs.AmazonSQSClient
    :storagegateway 'com.amazonaws.services.storagegateway.AWSStorageGatewayClient})
 
 (def api-refer-exclude
   "Map of clojure symbols to exclude for each api namespace to avoid
   redefinition warnings."
-  {:ec2 '[filter]})
+  {:ec2 '[filter]
+   :autoscaling '[filter]
+   :rds '[filter]})
 
 (defn api-ns-form
   "Return a `ns` form for the given api."

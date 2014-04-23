@@ -174,7 +174,8 @@
     BigInteger `bigint
     Date `to-date
     java.io.File `file
-    java.io.InputStream `input-stream}))
+    java.io.InputStream `input-stream
+    java.nio.ByteBuffer `identity}))
 
 (defn add-coercions
   "Add mappings of functions to coerce to types.  The function val is used to
