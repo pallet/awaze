@@ -123,6 +123,8 @@
                    (map #(vector (gensym "arg") %)))]))))
 
 (def static-constructors
+  "A map from class name to static constructor functions, for classes that
+  have no constructors."
   {"com.amazonaws.regions.Region"
    {:static "getRegion"
     :arg-bean com.amazonaws.regions.Regions}})
@@ -180,7 +182,6 @@
                         ~(coerce-value-form
                           arg-type v))))
               ~bean))))))
-
 
 (defn bean-instance
   "Return an instance of the specified bean.  If a value can't be constructed,
