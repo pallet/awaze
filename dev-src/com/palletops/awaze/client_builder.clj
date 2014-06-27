@@ -76,6 +76,14 @@
    Long/TYPE 0
    Integer/TYPE (int 0)})
 
+(defn public-constructor?
+  [^Constructor constructor]
+  (Modifier/isPublic (.getModifiers constructor)))
+
+(defn abstract-class?
+  [^Class clazz]
+  (Modifier/isAbstract (.getModifiers clazz)))
+
 (defn required-constructor-args
   "When a class has no default constructor, returns a vector with a constructor
   and a sequence of nils to be used as constructor arguments."
@@ -122,7 +130,8 @@
          (if (= class com.amazonaws.services.ec2.model.InstanceType)
            `(. ~class ~'fromValue (name ~m))
            `(Enum/valueOf ~class (name ~m)))
-
+         (= class com.amazonaws.regions.Region)
+            `(. ~com.amazonaws.regions.Regions ~'fromName (name ~m))
          :else
          (let [[ctor args] (required-constructor-args class)]
            `(let [~@(apply concat args)
@@ -139,7 +148,6 @@
                           arg-type v))))
               ~bean))))))
 
-
 (defn bean-instance
   "Return an instance of the specified bean.  If a value can't be constructed,
   return nil?."
@@ -147,17 +155,21 @@
   (cond
    (.isInterface class) nil
    (enum? class) nil
+   (= class com.amazonaws.regions.Region) nil
+   (abstract-class? class) nil
    :else
    (let [[^Constructor ctor args] (required-constructor-args class)]
-     (.newInstance
-      ctor
-      (into-array Object
-                  (->> args
-                       (map second)
-                       (map (fn [x]     ; remove bean constructor expressions
-                              (if (or (list? x) (instance? clojure.lang.Cons x))
-                                nil
-                                x)))))))))
+    (if (public-constructor? ctor)
+      (.newInstance
+        ctor
+        (into-array Object
+          (->> args
+            (map second)
+            (map (fn [x]     ; remove bean constructor expressions
+                    (if (or (list? x) (instance? clojure.lang.Cons x))
+                      nil
+                      x))))))
+      nil))))
 
 (defmulti setter-arg-type
   "Return a sequence of bean types used in an argument"
