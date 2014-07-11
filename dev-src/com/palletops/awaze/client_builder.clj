@@ -59,6 +59,22 @@
            raw " "(class raw))))))
 
 ;;; # Bean Factories
+(defn- select-vararg-overload
+  [setters]
+  (or (first
+       (remove
+        #(.isArray ^Class (first (.getParameterTypes ^Method %)))
+        setters))
+      (first setters)))
+
+(defn- filter-vararg-overloads
+  "Filter out overloaded setters that just provide convenience
+  functions to other setters."
+  [setters]
+  (->> (group-by #(.getName ^Method %) setters)
+       (map second)
+       (map select-vararg-overload)))
+
 (defn- setters
   "Return a sequence of vectors with the hyphenated keywords and setter method
   for the specified `class`."
@@ -67,6 +83,7 @@
        (filterv public-method?)
        (filterv #(.startsWith (.getName ^Method %) "set"))
        (filterv #(= 1 (count (.getParameterTypes ^Method %))))
+       filter-vararg-overloads
        (mapv #(vector (camel->keyword (subs (.getName ^Method %) 3)) %))))
 
 (def primitive-default-value
