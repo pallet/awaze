@@ -28,35 +28,37 @@
   [^ParameterizedType type value]
   (let [raw (.getRawType type)
         [actual & others] (.getActualTypeArguments type)]
-    (cond
-     (or (= raw java.util.List) ((set (ancestors raw)) java.util.List))
-     (let [arg (gensym "arg")]
-       `(map (fn [~arg] ~(coerce-value-form actual arg)) ~value))
+    (with-meta
+      (cond
+       (or (= raw java.util.List) ((set (ancestors raw)) java.util.List))
+       (let [arg (gensym "arg")]
+         `(map (fn [~arg] ~(coerce-value-form actual arg)) ~value))
 
-     (or (= raw java.util.Map) ((set (ancestors raw)) java.util.Map))
-     (let [arg (gensym "arg")]
-       `(zipmap
-         (map (fn [~arg] ~(coerce-value-form actual arg)) (keys ~value))
-         (map
-          (fn [~arg] ~(coerce-value-form (first others) arg))
-          (vals ~value))))
+       (or (= raw java.util.Map) ((set (ancestors raw)) java.util.Map))
+       (let [arg (gensym "arg")]
+         `(zipmap
+           (map (fn [~arg] ~(coerce-value-form actual arg)) (keys ~value))
+           (map
+            (fn [~arg] ~(coerce-value-form (first others) arg))
+            (vals ~value))))
 
-     (or (= raw java.util.Collection)
-         ((set (ancestors raw)) java.util.Collection))
-     (let [arg (gensym "arg")]
-       `(map (fn [~arg] ~(coerce-value-form actual arg)) ~value))
+       (or (= raw java.util.Collection)
+           ((set (ancestors raw)) java.util.Collection))
+       (let [arg (gensym "arg")]
+         `(map (fn [~arg] ~(coerce-value-form actual arg)) ~value))
 
-     ;; (or (= raw com.amazonaws.services.ec2.model.DryRunSupportedRequest)
-     ;;     ((set (ancestors raw))
-     ;;      com.amazonaws.services.ec2.model.DryRunSupportedRequest))
-     ;; `(assert false
-     ;;          "Don't know how to hnadle args with type DryRunSupportedRequest")`
+       ;; (or (= raw com.amazonaws.services.ec2.model.DryRunSupportedRequest)
+       ;;     ((set (ancestors raw))
+       ;;      com.amazonaws.services.ec2.model.DryRunSupportedRequest))
+       ;; `(assert false
+       ;;   "Don't know how to hnadle args with type DryRunSupportedRequest")`
 
-     :else
-     (assert
-      nil
-      (str "Don't know how to handle generic args with raw type "
-           raw " "(class raw))))))
+       :else
+       (assert
+        nil
+        (str "Don't know how to handle generic args with raw type "
+             raw " "(class raw))))
+      {:tag raw})))
 
 ;;; # Bean Factories
 (defn- select-vararg-overload
@@ -613,12 +615,14 @@
     (let [gen-src (file target-path "generated")]
       (println "Generating awaze source to" (str gen-src))
       (.mkdirs gen-src)
-      (let [ns-beans (gen-apis gen-src {:pretty-print pp})
-            ns-beans (reduce
-                      (fn [m b]
-                        (update-in m [(aws-ns-kw b)]
-                                   #(concat [b] %)))
-                      ns-beans
-                      (map :arg-bean (vals static-constructors)))]
-        (println "Generating bean namespaces for" (count ns-beans) "namespaces")
-        (gen-beans gen-src ns-beans {:pretty-print pp})))))
+      (binding [*print-meta* true]
+        (let [ns-beans (gen-apis gen-src {:pretty-print pp})
+              ns-beans (reduce
+                        (fn [m b]
+                          (update-in m [(aws-ns-kw b)]
+                                     #(concat [b] %)))
+                        ns-beans
+                        (map :arg-bean (vals static-constructors)))]
+          (println "Generating bean namespaces for"
+                   (count ns-beans) "namespaces")
+          (gen-beans gen-src ns-beans {:pretty-print pp}))))))

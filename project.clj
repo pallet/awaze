@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [com.amazonaws/aws-java-sdk "1.7.6"
                   :exclusions [commons-logging commons-codec joda-time]]
-                 [fipp "0.4.1"]
+                 [fipp "0.4.3"]
                  [joda-time "2.2"]]
   :source-paths ["src" "dev-src" "target/generated"]
   :global-vars {*warn-on-reflection* true}
