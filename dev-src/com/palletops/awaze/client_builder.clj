@@ -108,12 +108,12 @@
    {:static "getRegion"
     :arg-bean com.amazonaws.regions.Regions}})
 
-(defn has-from-value? [class]
+(defn has-from-value? [^Class class]
   (try (let [v (.getMethod class "fromValue" (into-array Class [String]))]
          (bit-and (.getModifiers v) Modifier/PUBLIC))
        (catch NoSuchMethodException _)))
 
-(defn has-from-name? [class]
+(defn has-from-name? [^Class class]
   (try (let [v (.getMethod class "fromName" (into-array Class [String]))]
          (bit-and (.getModifiers v) Modifier/PUBLIC))
        (catch NoSuchMethodException _)))
