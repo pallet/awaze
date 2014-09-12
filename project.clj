@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
-                 [com.amazonaws/aws-java-sdk "1.8.2"
+                 [com.amazonaws/aws-java-sdk "1.8.3"
                   :exclusions [commons-logging commons-codec joda-time]]
                  [fipp "0.4.3"]
                  [joda-time "2.2"]]
