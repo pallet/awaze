@@ -5,8 +5,4 @@
 
 (deftest simple-test
   (is (map? (describe-instances-map {:access-key "a" :secret-key "b"})))
-  (is (= (set
-          ['[credentials]
-           '[credentials
-             {:keys [next-token max-results instance-ids filters]}]])
-         (-> #'describe-instances-map meta :arglists set))))
+  (is (= 2 (count (-> #'describe-instances-map meta :arglists)))))
