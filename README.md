@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/pallet/awaze.svg?branch=master)](https://travis-ci.org/pallet/awaze)
 
 A clojure client library for AWS services, using the
-[AWS Java SDK][awssdk], version 1.7.6.  See the
+[AWS Java SDK][awssdk], version 1.8.3.  See the
 [SDK Release Notes][awssdk-release-notes].
 
 The library is implemented using reflection to generate code, and therefore avoids
@@ -46,7 +46,7 @@ Originally based on [amazonica][amazonica].
 Add the following to your dependencies:
 
 ```clj
-[com.palletops/awaze "0.1.1"]
+[com.palletops/awaze "0.1.2"]
 ```
 
 ## Usage
