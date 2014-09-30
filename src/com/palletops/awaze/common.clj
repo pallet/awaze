@@ -37,6 +37,15 @@
   [s]
   (keyword (camel->dashed s)))
 
+(defn aws-ns-kw [^Class class]
+  (assert (.startsWith (.getName class) "com.amazonaws."))
+  (let [segs (split (.getName class) #"\.")
+        tl (nth segs 2)]
+    (cond
+     (= "services" tl) (keyword (nth segs 3))
+     (re-matches #"[A-Z].*" tl) :root
+     :else (keyword tl))))
+
 (defn type->symbol
   "Return a symbol based on a dashed version of the type's class name."
   [^Class class]
@@ -121,7 +130,7 @@
 (defn aws-client
   "Return an aws client for the given aws `service` keyword, specifying
   `:access-key`, `:secret-key` and optionally `:endpoint` as `credentials`."
-  [service {:keys [access-key secret-key endpoint] :as credentials}]
+  [service {:keys [access-key secret-key endpoint region] :as credentials}]
   {:pre [(verify-credentials credentials)]}
   (let [^AmazonWebServiceClient client
         (aws-client-factory
@@ -132,13 +141,16 @@
            Regions/valueOf
            Region/getRegion
            (.setRegion client)))
+    (when region
+      (->> region
+           Regions/fromName
+           Region/getRegion
+           (.setRegion client)))
     client))
 
 (defmulti aws
   "Defines a multi-method for dispatching data to AWS requests."
   (fn [request] [(::api request) (:fn request)]))
-
-
 
 ;;; # Value Coercions
 
@@ -162,7 +174,8 @@
     BigInteger `bigint
     Date `to-date
     java.io.File `file
-    java.io.InputStream `input-stream}))
+    java.io.InputStream `input-stream
+    java.nio.ByteBuffer `identity}))
 
 (defn add-coercions
   "Add mappings of functions to coerce to types.  The function val is used to
@@ -182,14 +195,18 @@
 (defmethod coerce-value-form Class
   [^Class type value]
   (cond
-   (enum? type) `(~(type->symbol type) ~value)
+   (enum? type) `(~(symbol (name (aws-ns-kw type))
+                           (name (type->symbol type)))
+                  ~value)
    (.isArray type) (let [arg (gensym "arg")]
                      `(into-array
                        ~(.getComponentType type)
                        (map (fn [~arg]
                               ~(coerce-value-form (.getComponentType type) arg))
                             ~value)))
-   (aws-package? type) `(~(type->symbol type) ~value)
+   (aws-package? type) `(~(symbol (name (aws-ns-kw type))
+                                  (name (type->symbol type)))
+                         ~value)
 
    :else (let [f (get @coercion-syms type)]
            (when-not f
