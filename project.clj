@@ -1,4 +1,4 @@
-(defproject com.palletops/awaze "0.1.2"
+(defproject com.palletops/awaze "0.1.3-SNAPSHOT"
   :description "A pallet library for AWS, using the AWS java SDK."
   :url "https://github.com/pallet/awaze"
   :license {:name "Eclipse Public License"
