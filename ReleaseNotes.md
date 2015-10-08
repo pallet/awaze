@@ -1,3 +1,8 @@
+## 0.1.3
+
+- Ensure boolean fields in beans are set correctly
+  Boolean false values were not being set on beans.
+
 ## 0.1.2
 
 - Update to AWS SDK 1.8.3
