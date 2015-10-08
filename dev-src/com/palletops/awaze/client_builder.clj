@@ -176,11 +176,12 @@
                       :let [args (.getGenericParameterTypes method)]
                       :when (= 1 (count args))
                       :let [arg-type (first args)]]
-                  `(when-let [~v (~kw ~m)]
-                     (. ~bean
-                        ~(symbol (.getName method))
-                        ~(coerce-value-form
-                          arg-type v))))
+                  `(let [~v (~kw ~m ::undef)]
+                     (when-not (= ~v ::undef)
+                       (. ~bean
+                          ~(symbol (.getName method))
+                          ~(coerce-value-form
+                            arg-type v)))))
               ~bean))))))
 
 (defn bean-instance
