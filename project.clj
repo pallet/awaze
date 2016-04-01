@@ -3,11 +3,11 @@
   :url "https://github.com/pallet/awaze"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.4.0"]
-                 [com.amazonaws/aws-java-sdk "1.8.3"
+  :dependencies [[com.amazonaws/aws-java-sdk "1.10.65"
                   :exclusions [commons-logging commons-codec joda-time]]
                  [fipp "0.4.3"]
                  [joda-time "2.2"]]
+  :profiles {:provided  {:dependencies [[org.clojure/clojure "1.7.0"]]}}
   :source-paths ["src" "dev-src" "target/generated"]
   :global-vars {*warn-on-reflection* true}
   :main ^:skip-aot com.palletops.awaze.client-builder
