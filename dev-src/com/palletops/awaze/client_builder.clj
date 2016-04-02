@@ -101,7 +101,12 @@
   "When a class has no default constructor, returns a vector with a constructor
   and a sequence of nils to be used as constructor arguments."
   ([^Class class symbolic?]
-  (let [sortf (fn [^Constructor c] (count (.getParameterTypes c)))
+   (let [sortf (fn [^Constructor c]
+                 ;; prefer lower arg constructors, and constructors
+                 ;; without array args.
+                 (+ (count (.getParameterTypes c))
+                    (* (count (filter #(.isArray %) (.getParameterTypes c)))
+                       0.01)))
         s3objectid? (fn [^Constructor c]
                       (and
                        (= 1 (count (.getParameterTypes c)))
