@@ -105,14 +105,16 @@
                  ;; prefer lower arg constructors, and constructors
                  ;; without array args.
                  (+ (count (.getParameterTypes c))
-                    (* (count (filter #(.isArray %) (.getParameterTypes c)))
+                    (* (->>  (.getParameterTypes c)
+                             (filter #(.isArray ^Class %))
+                             count)
                        0.01)))
         s3objectid? (fn [^Constructor c]
                       (and
                        (= 1 (count (.getParameterTypes c)))
                        (#{"com.amazonaws.services.s3.model.S3ObjectId"
                           "com.amazonaws.services.s3.model.S3ObjectIdBuilder"}
-                        (.getName (first (.getParameterTypes c))))))
+                        (.getName ^Class (first (.getParameterTypes c))))))
         [^Constructor ctor & others] (->>
                                       (.getConstructors class)
                                       (remove s3objectid?)
@@ -126,7 +128,7 @@
                            (bean-instance class))
                          (primitive-default-value class)))
         type-tag (fn [^Class class]
-                   (if (.isArray class)
+                   (if (.isArray ^Class class)
                      `(Class/forName ~(.getName class))
                      (symbol (.getName class))))]
     (if-let [arglist (and ctor (.getParameterTypes ctor))]
