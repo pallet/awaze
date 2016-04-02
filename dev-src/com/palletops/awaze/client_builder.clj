@@ -119,14 +119,18 @@
                          (if symbolic?
                            `(~(type->symbol class) {})
                            (bean-instance class))
-                         (primitive-default-value class)))]
+                         (primitive-default-value class)))
+        type-tag (fn [^Class class]
+                   (if (.isArray class)
+                     `(Class/forName ~(.getName class))
+                     (symbol (.getName class))))]
     (if-let [arglist (and ctor (.getParameterTypes ctor))]
       (if (seq others)
         ;; need to give the compiler type info to pick the correct overload
         [ctor
          (mapv
           #(let [arg (with-meta (gensym "arg")
-                       {:tag (symbol (.getName ^Class %))})
+                       {:tag (type-tag %)})
                  val (arg-instance %)]
              [arg val])
           arglist)]
