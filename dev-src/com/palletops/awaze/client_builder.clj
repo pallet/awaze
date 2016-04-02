@@ -6,7 +6,7 @@
    [clojure.tools.logging :refer [infof debugf]]
    [fipp.edn :refer [pprint]]
    [com.palletops.awaze.common
-    :refer [aws aws-client aws-client-factory aws-ns-kw aws-package?
+    :refer [abstract? aws aws-client aws-client-factory aws-ns-kw aws-package?
             camel->dashed camel->keyword
             coerce-value-form enum?
             to-data to-date type->symbol]])
@@ -95,32 +95,57 @@
    Long/TYPE 0
    Integer/TYPE (int 0)})
 
+(declare bean-instance)
+
 (defn required-constructor-args
   "When a class has no default constructor, returns a vector with a constructor
   and a sequence of nils to be used as constructor arguments."
-  [^Class class]
-  (let [sortf (fn [^Constructor c] (count (.getParameterTypes c)))
+  ([^Class class symbolic?]
+   (let [sortf (fn [^Constructor c]
+                 ;; prefer lower arg constructors, and constructors
+                 ;; without array args.
+                 (+ (count (.getParameterTypes c))
+                    (* (->>  (.getParameterTypes c)
+                             (filter #(.isArray ^Class %))
+                             count)
+                       0.01)))
+        s3objectid? (fn [^Constructor c]
+                      (and
+                       (= 1 (count (.getParameterTypes c)))
+                       (#{"com.amazonaws.services.s3.model.S3ObjectId"
+                          "com.amazonaws.services.s3.model.S3ObjectIdBuilder"}
+                        (.getName ^Class (first (.getParameterTypes c))))))
         [^Constructor ctor & others] (->>
                                       (.getConstructors class)
+                                      (remove s3objectid?)
                                       (sort-by sortf)
                                       (partition-by sortf)
-                                      first)]
+                                      first)
+        arg-instance (fn [^Class class]
+                       (if (aws-package? class)
+                         (if symbolic?
+                           `(~(type->symbol class) {})
+                           (bean-instance class))
+                         (primitive-default-value class)))
+        type-tag (fn [^Class class]
+                   (if (.isArray ^Class class)
+                     `(Class/forName ~(.getName class))
+                     (symbol (.getName class))))]
     (if-let [arglist (and ctor (.getParameterTypes ctor))]
       (if (seq others)
         ;; need to give the compiler type info to pick the correct overload
         [ctor
          (mapv
           #(let [arg (with-meta (gensym "arg")
-                       {:tag (symbol (.getName ^Class %))})
-                 val (if (aws-package? %)
-                       `(~(type->symbol %) {})
-                       (primitive-default-value %))]
+                       {:tag (type-tag %)})
+                 val (arg-instance %)]
              [arg val])
           arglist)]
         ;; single overload - just return nils or primitive values
         [ctor (->> arglist
-                   (map primitive-default-value)
+                   (map arg-instance)
                    (map #(vector (gensym "arg") %)))]))))
+  ([class] (required-constructor-args class true)))
 
 (def static-constructors
   "A map from class name to static constructor functions, for classes that
@@ -191,24 +216,19 @@
   (cond
    (.isInterface class) nil
    (enum? class) nil
+   (= (.getName class) "com.amazonaws.regions.Region") nil
    :else
-   (if-let [[^Constructor ctor args] (required-constructor-args class)]
-     (if ctor
-       (let [vargs (seq
-                    (->>
-                     args
-                     (map second)
-                     (map (fn [x] ; remove bean constructor expressions
-                            (if (or (list? x) (instance? clojure.lang.Cons x))
-                              nil
-                              x)))))]
-         (.newInstance
-          ctor
-          (into-array Object vargs)))))))
+   (let [[^Constructor ctor args] (required-constructor-args class)]
+     (if-let [[^Constructor ctor args] (required-constructor-args class false)]
+       (if ctor
+         (let [vargs (seq (map second args))]
+           (.newInstance
+            ctor
+            (into-array Object vargs))))))))
 
 (defmulti setter-arg-type
   "Return a sequence of bean types used in an argument"
-  (fn [type] (class type)))
+  class)
 
 (defmethod setter-arg-type Class
   [^Class type]
@@ -230,7 +250,6 @@
   [^java.lang.reflect.TypeVariable v]
   (arg-type (first (.getBounds v))))
 
-
 (defn- aws-bean-types
   "For a sequence of `methods`, return a sequence of those arguments that are
   AWS bean types."
@@ -244,6 +263,7 @@
                       (map arg-type cs)))
                   (.getGenericParameterTypes m))))
        (filter aws-package?)
+       (remove abstract?)
        (distinct)))
 
 (defn request-beans

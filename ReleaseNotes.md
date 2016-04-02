@@ -1,3 +1,7 @@
+## 0.1.4
+
+- Update to AWS SDK 1.10.65
+
 ## 0.1.3
 
 - Ensure boolean fields in beans are set correctly

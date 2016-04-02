@@ -87,6 +87,9 @@
     nil)
   java.util.Map
   (to-data [obj]
+    ;; (binding [*out* *err*]
+    ;;   (println "to-data MAP" (pr-str (type obj)) (pr-str obj)))
+    ;; (flush)
     (if-not (empty? obj)
       (zipmap
        (map #(camel->keyword (name %)) (keys obj))
@@ -99,11 +102,15 @@
     (DateTime. (.getTime obj)))
   Object
   (to-data [obj]
+    ;; (binding [*out* *err*]
+    ;;   (println "to-data OBJECT" (pr-str (type obj)) (pr-str obj)))
+    ;; (flush)
     (if (aws-package? (class obj))
       (let [b (bean obj)
             ;; filter recursive keys we do not need
             ;; originalRequest is in DescribeSecurityGroupsRequest, etc
-            k (filter #{:originalRequest} (keys b))]
+            k (filter #{:originalRequest :originalRequestObject :readLimitInfo}
+                      (keys b))]
         (to-data (apply dissoc b :class k)))
       obj)))
 
@@ -188,6 +195,11 @@
   [^Class type]
   (= java.lang.Enum (.getSuperclass type)))
 
+(defn abstract? [^Class class]
+  (and
+   (not (.isEnum class))
+   (empty? (seq (.getConstructors class)))))
+
 (defmulti coerce-value-form
   "Return a form that coerces the supplied `value` to `type`."
   (fn [type value] (class type)))
@@ -204,9 +216,11 @@
                        (map (fn [~arg]
                               ~(coerce-value-form (.getComponentType type) arg))
                             ~value)))
-   (aws-package? type) `(~(symbol (name (aws-ns-kw type))
-                                  (name (type->symbol type)))
-                         ~value)
+   (aws-package? type) (if (abstract? type)
+                         value
+                         `(~(symbol (name (aws-ns-kw type))
+                                    (name (type->symbol type)))
+                           ~value))
 
    :else (let [f (get @coercion-syms type)]
            (when-not f
